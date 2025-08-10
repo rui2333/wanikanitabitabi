@@ -16,26 +16,19 @@
 
 package com.wanikanitabitabi.learn.core.data
 
+import com.wanikanitabitabi.learn.core.data.data.ApiKeyVerificationResult
+import com.wanikanitabitabi.learn.core.data.data.UserInfoResult
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import com.wanikanitabitabi.learn.core.database.WaniTabi
-import com.wanikanitabitabi.learn.core.database.WaniTabiDao
-import javax.inject.Inject
 
 interface WaniTabiRepository {
     val waniTabis: Flow<List<String>>
 
+    suspend fun login(username: String, password: String)
+
     suspend fun add(name: String)
+
+    suspend fun verifyApiKey(apiKey: String): ApiKeyVerificationResult
+
+    suspend fun getUserInfo(apiKey: String): UserInfoResult
 }
 
-class DefaultWaniTabiRepository @Inject constructor(
-    private val waniTabiDao: WaniTabiDao
-) : WaniTabiRepository {
-
-    override val waniTabis: Flow<List<String>> =
-        waniTabiDao.getWaniTabis().map { items -> items.map { it.name } }
-
-    override suspend fun add(name: String) {
-        waniTabiDao.insertWaniTabi(WaniTabi(name = name))
-    }
-}
