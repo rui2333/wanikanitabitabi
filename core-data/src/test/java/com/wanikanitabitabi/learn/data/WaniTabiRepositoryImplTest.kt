@@ -23,19 +23,19 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import com.wanikanitabitabi.learn.core.data.DefaultWaniTabiRepository
+import com.wanikanitabitabi.learn.core.data.WaniTabiRepositoryImpl
 import com.wanikanitabitabi.learn.core.database.WaniTabi
 import com.wanikanitabitabi.learn.core.database.WaniTabiDao
 
 /**
- * Unit tests for [DefaultWaniTabiRepository].
+ * Unit tests for [WaniTabiRepositoryImpl].
  */
 @OptIn(ExperimentalCoroutinesApi::class) // TODO: Remove when stable
-class DefaultWaniTabiRepositoryTest {
+class WaniTabiRepositoryImplTest {
 
     @Test
     fun waniTabis_newItemSaved_itemIsReturned() = runTest {
-        val repository = DefaultWaniTabiRepository(FakeWaniTabiDao())
+        val repository = WaniTabiRepositoryImpl(FakeWaniTabiDao())
 
         repository.add("Repository")
 

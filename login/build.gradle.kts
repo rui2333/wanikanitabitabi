@@ -1,20 +1,3 @@
-/*
- * Copyright (C) 2022 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -23,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.wanikanitabitabi.learn.feature.wanitabi"
+    namespace = "com.wanikanitabitabi.learn.login.ui"
     compileSdk = 36
 
     defaultConfig {
@@ -56,6 +39,12 @@ dependencies {
     implementation(project(":core-ui"))
     androidTestImplementation(project(":core-testing"))
 
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)
 
@@ -65,7 +54,19 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
-    // Compose dependencies are provided by core-ui module
+    // Compose
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.icon)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+
+    // Network
+    implementation(libs.okhttp)
+
+    // Shared Preferences
+    implementation(libs.androidx.security.crypto)
+
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
     // Instrumented tests

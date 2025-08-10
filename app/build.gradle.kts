@@ -79,6 +79,7 @@ android {
 dependencies {
     implementation(project(":core-ui"))
     implementation(project(":feature-wanitabi"))
+    implementation(project(":login"))
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

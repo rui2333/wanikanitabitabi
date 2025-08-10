@@ -14,3 +14,15 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Build directories for all modules
+*/build/
+build/
+
+# Kotlin compiler cache
+.kotlin/
+
+# Android lint reports
+lint-report.html
+lint-report_files/
+lint-results*.xml

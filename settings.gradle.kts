@@ -15,6 +15,10 @@
  */
 
 pluginManagement {
+    plugins {
+        // Ensure this version matches your libs.versions.toml or remove it if using catalog exclusively for versioning
+        id("org.jetbrains.kotlin.android") version "2.1.20" apply false
+    }
     repositories {
         gradlePluginPortal()
         google()
@@ -37,3 +41,4 @@ include(":core-testing")
 include(":core-ui")
 include(":feature-wanitabi")
 include(":test-app")
+include(":login")
