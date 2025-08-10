@@ -2,6 +2,12 @@
 
 A modern Android application for WaniKani Japanese learning, built with Jetpack Compose and following Clean Architecture principles.
 
+
+
+https://github.com/user-attachments/assets/0312f3ee-aaef-4f0d-871f-a1b132ebb20c
+
+
+
 ## 🌟 Features
 
 ### 🔐 Authentication System
