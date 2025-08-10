@@ -58,6 +58,10 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
 
+    // Network
+    implementation(libs.okhttp)
+
+
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

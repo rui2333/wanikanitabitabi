@@ -23,7 +23,9 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import com.wanikanitabitabi.learn.core.data.WaniTabiRepository
-import com.wanikanitabitabi.learn.core.data.DefaultWaniTabiRepository
+import com.wanikanitabitabi.learn.core.data.WaniTabiRepositoryImpl
+import com.wanikanitabitabi.learn.core.data.data.ApiKeyVerificationResult
+import com.wanikanitabitabi.learn.core.data.data.UserInfoResult
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,15 +36,26 @@ interface DataModule {
     @Singleton
     @Binds
     fun bindsWaniTabiRepository(
-        waniTabiRepository: DefaultWaniTabiRepository
+        waniTabiRepository: WaniTabiRepositoryImpl
     ): WaniTabiRepository
 }
 
 class FakeWaniTabiRepository @Inject constructor() : WaniTabiRepository {
     override val waniTabis: Flow<List<String>> = flowOf(fakeWaniTabis)
+    override suspend fun login(username: String, password: String) {
+        TODO("Not yet implemented")
+    }
 
     override suspend fun add(name: String) {
         throw NotImplementedError()
+    }
+
+    override suspend fun verifyApiKey(apiKey: String): ApiKeyVerificationResult {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getUserInfo(apiKey: String): UserInfoResult {
+        TODO("Not yet implemented")
     }
 }
 

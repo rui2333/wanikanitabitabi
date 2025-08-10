@@ -24,13 +24,25 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.wanikanitabitabi.learn.feature.wanitabi.ui.WaniTabiScreen
+import com.wanikanitabitabi.learn.login.ui.LoginScreen
+import com.wanikanitabitabi.learn.login.ui.SuccessScreen
 
 @Composable
 fun MainNavigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
+    NavHost(navController = navController, startDestination = "login") {
         composable("main") { WaniTabiScreen(modifier = Modifier.padding(16.dp)) }
+        composable("success") { SuccessScreen(modifier = Modifier.padding(16.dp)) }
+        composable("login") { 
+            LoginScreen(
+                onLoginSuccess = {
+                    navController.navigate("success") {
+                        popUpTo("login") { inclusive = true }
+                    }
+                }
+            )
+        }
         // TODO: Add more destinations
     }
 }
